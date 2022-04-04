@@ -1,0 +1,28 @@
+https://pythontutor.com/visualize.html#mode=edit
+class Node:
+    def __init__(self, valor):
+        self.valor = valor
+        self.siguiente = None
+
+def main():
+ nodo1 = Node(1)
+ nodo2 = Node(3)
+ nodo3 = Node(4)
+ nodo1.next = nodo2
+ nodo2.next = nodo3
+    
+main()
+
+
+class Node:
+    def __init__(self, val : int):
+        self.val = val
+        self.next = None
+
+def insertarAlInicio(head: Node, valor : int) -> Node:
+  unNuevoNodoCuyoValorEsElValorQueMeLlego : Node = Node(valor)
+  unNuevoNodoCuyoValorEsElValorQueMeLlego.next = head
+  return unNuevoNodoCuyoValorEsElValorQueMeLlego
+
+https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe
+https://visualgo.net/en/list

@@ -1,0 +1,91 @@
+def formas(n):
+   if n <= 2:
+      return n
+   else:
+      return formas(n-1) + formas(n-2)
+
+________________________________________________
+
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+def posicion(head: Node, i: int) -> int:
+    currentNode = head
+    if head == None:
+        return 0
+    else:
+        for index in range (i-1):
+            currentNode = head.next
+ 
+ 
+
+ef maximo(head: Node) -> int:
+    loQueMeDan = head
+    laNada = None
+    if loQueMeDan == laNada:
+        return 0
+    elValorDeLaCabeza = head.val
+    elSiguienteNodo = head.next
+    elMaximoDel
+
+
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+def buscar(head: Node, k : int) -> int:
+  loQueMeDan = head
+  if loQueMeDan == None: # si es la ausencia de materia
+    return -1 
+  elElementoActual = head.val #el valor que necesito
+  elQueNecesito = k
+  if elElementoActual == elQueNecesito:
+   return 0
+  #Si no lo encontré
+  elNodoSiguiente = loQueMeDan.next
+  loQueMeRetorna = buscar(elNodoSiguiente,k) 
+  if loQueMeRetorna == -1: #significa que no encontró na
+   return -1
+  else: #el número de pasos desde donde lo encontré
+   unoMasLoQueMeAcabaDeRetornar = loQueMeRetorna + 1
+   return unoMasLoQueMeAcabaDeRetornar
+
+def buscar(head: Node, k : int, index = 0) -> int:
+  loQueMeDan = head
+  if loQueMeDan == None: # si es la ausencia de materia
+    return -1 
+  elElementoActual = head.val #el valor que necesito
+  elQueNecesito = k
+  if elElementoActual == elQueNecesito:
+   return index
+  #Si no lo encontré
+  elNodoSiguiente = loQueMeDan.next
+  loQueMeRetorna = buscar(elNodoSiguiente,k, index + 1) 
+  if loQueMeRetorna == -1: #significa que no encontró na
+   return -1
+  else: #el número de pasos desde donde lo encontré
+   indice_encontrado = loQueMeRetorna
+   return indice_encontrado
+   
+   
+   
+   
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+#Respuesta de SLT
+#retornando indice del elemento buscado
+def buscar(head: Node,k: int, i = 0) -> int:
+    if head.val == k:
+        return i
+    elif head.val == None:
+        return -1
+    elif head.next == None:
+        return -1
+    else:
+        return buscar(head.next,k,i+1)
