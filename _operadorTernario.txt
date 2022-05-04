@@ -1,0 +1,7 @@
+QUÉ_COSA   IF_TRUE  "if"  CONDICIÓN  "else"  IF_FALSE
+
+ejm:
+
+return "YES" if res == True else "NO"
+
+var = 10 if strres == "Diez" else 0
