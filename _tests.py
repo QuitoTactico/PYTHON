@@ -60,8 +60,11 @@ def t11():
     l.append(9)
     print(l)
 
-def t():
+def t12():
     l = eval("(" + input() + ")")
     print(l[-1])
+
+def t():
+    '''do break if int(input()) == 0 else print("a")'''
 
 t()
