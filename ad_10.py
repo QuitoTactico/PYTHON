@@ -10,7 +10,7 @@ def magic(m):
     return "Cuadrado muggle" if sum([m[0][0],m[1][1],m[2][2],m[3][3]]) != c or sum([m[0][3],m[1][2],m[2][1],m[3][0]]) != c else "Cuadrado magico"
 n = int(input())
 for _ in range(n):
-    s , m= input().split() , []
+    s , m= input().replace(":","").split() , []
     for _ in range(4): m.append(list(map(int,input().split())))
     d[int(s[1])] = magic(m)
 for r in range(n): print(d[r+1])
