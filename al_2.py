@@ -15,7 +15,7 @@ def rangohoras(h):
     if d3 <= act < d4: d["sunny warmers"] += 1
     if d4 <= act < d5: d["lunch workers"] += 1
     if d5 <= act < d6: d["sunset lovers"] += 1
-    if d6 <= act < d7: d["prime timers"] += 1
+    if d6 <= act <= d7: d["prime timers"] += 1
 
 for _ in range(int(input())): rangohoras(input().split()[1])
 for i in range(6): print(f"{l[i]} {d[l[i]]}")
