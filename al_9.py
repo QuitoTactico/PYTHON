@@ -13,3 +13,4 @@ def calendario(y, m):
 for _ in range(int(input())):
     s = list(map(int,input().split("/")))
     calendario(s[2],s[1])
+    print()
