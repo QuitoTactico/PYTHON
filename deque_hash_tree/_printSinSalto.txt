@@ -1,0 +1,13 @@
+print("Hola",end="")
+print("Bye")
+
+print("Hola",end=" ")
+print("Bye")
+
+
+COSAS CHIMBAS DEL END:
+print("Hola",end="\n\n\n\n")
+print("Bye")
+
+print("Hola",end=", ")
+print("Bye")
