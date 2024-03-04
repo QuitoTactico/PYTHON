@@ -1,0 +1,11 @@
+suma_M :: Num a => Matriz a -> Matriz a -> Matriz a
+suma_M pos_m1 pos_m2 = 
+  listArray (bounds pos_m1) (zipWith (+) (elems pos_m1) (elems pos_m2))
+
+resta_M :: Num a => Matriz a -> Matriz a -> Matriz a
+resta_M pos_m1 pos_m2 = 
+  listArray (bounds pos_m1) (zipWith (-) (elems pos_m1) (elems pos_m2))
+
+multip_M :: Num a => Matriz a -> Matriz a -> Matriz a
+multip_M pos_m1 pos_m2 = 
+  listArray (bounds pos_m1) (zipWith (*) (elems pos_m1) (elems pos_m2))

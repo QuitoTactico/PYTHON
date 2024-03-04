@@ -1,0 +1,39 @@
+import Data.Array
+
+type Matriz a = Array (Int,Int) a
+
+listaMatriz :: Num a => [[a]] -> Matriz a
+listaMatriz xss = listArray ((1,1),(m,n)) (concat xss)
+  where m = length xss
+        n = length (head xss)
+
+numColumnas :: Num a => Matriz a -> Int
+numColumnas = snd . snd . bounds
+
+separa :: Int -> [a] -> [[a]]
+separa _ [] = []
+separa n xs = take n xs : separa n (drop n xs)
+
+matrizLista :: Num a => Matriz a -> [[a]]
+matrizLista p = separa (numColumnas p) (elems p)
+
+sumaMatrices :: Num a => Matriz a -> Matriz a -> Matriz a
+sumaMatrices p q = 
+  listArray (bounds p) (zipWith (+) (elems p) (elems q))
+
+restaMatrices :: Num a => Matriz a -> Matriz a -> Matriz a
+restaMatrices p q = 
+  listArray (bounds p) (zipWith (-) (elems p) (elems q))
+
+multiMatrices :: Num a => Matriz a -> Matriz a -> Matriz a
+multiMatrices p q = 
+  listArray (bounds p) (zipWith (*) (elems p) (elems q))
+
+main = do
+
+  let m1 = listaMatriz [[5,1,8],[3,2,6]]
+  let m2 = listaMatriz [[4,6,3],[1,5,2]]
+
+  print(matrizLista (sumaMatrices m1 m2))
+  print(matrizLista (restaMatrices m1 m2))
+  print(matrizLista (multiMatrices m1 m2))

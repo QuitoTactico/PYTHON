@@ -1,0 +1,65 @@
+import Data.Array     --importamos lo necesario
+                      --las listas default no dan
+type Matriz a = Array (Int,Int) a
+
+lista_a_pos :: Num a => [[a]] -> Matriz a
+lista_a_pos xss = formato_pos ((1,1),(m,n)) (concat xss)
+  where m = length xss
+        n = length (head xss)
+
+--No se puede con length, toca hacerlo a mano,
+--Como todo...
+numColumnas :: Num a => Matriz a -> Int
+numColumnas = snd . snd . bounds
+
+--Array ya separa las cosas verticalmente (entre listas)
+--este sirve para lo horizontal (entre los elementos de cada una)
+separa :: Int -> [a] -> [[a]]
+separa _ [] = []
+separa n xs = take n xs : separa n (drop n xs)
+
+--Pasa los valores de las posiciones del formato pos a un array normalito
+pos_a_lista :: Num a => Matriz a -> [[a]]
+pos_a_lista p = separa (numColumnas p) (elems p)
+
+
+--                LAS OPERACIONES
+--        (irónicamente, lo más sencillo)
+
+--Son literalmente lo mismo, vuelve pares a los valores que tengan
+--la misma pos, y los "une" usando el operador que queramos.
+--el resultado de la operación va a quedar en esa pos, y luego
+--lo volvemos a pasar a lista normalita 
+--(bueno, Array, las listas normales no sirven pa na')
+
+
+suma_M :: Num a => Matriz a -> Matriz a -> Matriz a
+suma_M pos_m1 pos_m2 = 
+  formato_pos (bounds pos_m1) (zipWith (+) (elems pos_m1) (elems pos_m2))
+
+resta_M :: Num a => Matriz a -> Matriz a -> Matriz a
+resta_M pos_m1 pos_m2 = 
+  formato_pos (bounds pos_m1) (zipWith (-) (elems pos_m1) (elems pos_m2))
+
+multip_M :: Num a => Matriz a -> Matriz a -> Matriz a
+multip_M pos_m1 pos_m2 = 
+  formato_pos (bounds pos_m1) (zipWith (*) (elems pos_m1) (elems pos_m2))
+
+--No se le puede mandar el operador en string como hicimos en c++  :(
+
+--               BASTA DE CHÁCHARA
+
+
+main = do
+
+  --ESCRIBE AQUÍ LOS NÚMEROS DE TU MATRIZ c:
+
+  let m1 = lista_a_pos [[5,1,8],[3,2,6]]
+  let m2 = lista_a_pos [[4,6,3],[1,5,2]]
+
+  putStrLn "SUMA:\n"
+  print(pos_a_lista (suma_M m1 m2))
+  putStrLn "RESTA:\n"
+  print(pos_a_lista (resta_M m1 m2))
+  putStrLn "MULTIPLICACIÓN:\n"
+  print(pos_a_lista (multip_M m1 m2))

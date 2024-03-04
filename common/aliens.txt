@@ -1,3 +1,0 @@
-Rocky,100
-Tiramisu,800
-RayoVeloz,900
