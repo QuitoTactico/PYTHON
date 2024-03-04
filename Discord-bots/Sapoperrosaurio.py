@@ -1,6 +1,6 @@
 from discord import app_commands, Intents, Client, Interaction
 from discord.ext import commands
-from Pyramide import draw_pyramid
+from Pyramid import draw_pyramid
 
 class Bot(Client):
     def __init__(self, *, intents: Intents):
@@ -33,11 +33,11 @@ async def say(ctx, *, mensaje):
     await ctx.send(mensaje)
 
 @bot.command()
-async def feo(ctx, *, mensaje):
-    if mensaje.lower() == 'esteban':
-        await ctx.send(f'Falsísimo, Esteban es lindo')
+async def hi(ctx, *, mensaje):
+    if mensaje.lower() in ['hola','hi','hello','hey','oli','uwu','owo','que onda','que tal','que hay','que hubo','que pasa']:
+        await ctx.send('La re buena pa')
     else:
-        await ctx.send(f'{mensaje} es fea srjahbefgv')
+        await ctx.send(f'Uy que hijueputa más agreste, cómo va a decir ike que "{mensaje}"')
 
 @bot.command()
 async def piramide(ctx, n):
