@@ -74,7 +74,8 @@ def queue_battle(dist:int,*armies):
 			new_armies = []
 			for army_index, army in enumerate(armies):
 				if army_index not in dead_armies:
-					army.append(army.pop(0))
+					if army_index not in dead_heads:
+						army.append(army.pop(0))
 					new_armies.append(army)
 			armies = new_armies
 			bullets = []
