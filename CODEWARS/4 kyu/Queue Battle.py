@@ -16,6 +16,10 @@ class Bullet:
 		self.vel = vel
 		self.dist = dist
 		self.target = target
+	def __str__(self):
+		return f'{self.dist}|{self.target}'
+	def __repr__(self):
+		return f'{self.dist}|{self.target}'
 
 def armies_creation(armies) -> list[list[Soldier]]:
 	new_armies = []
@@ -34,6 +38,10 @@ def queue_battle(dist:int,*armies):
 
 
 	while len(armies) > 1:
+		print()
+		print(armies)
+		print(bullets)
+
 		# the bullets hit while the soldiers prepare
 		army_died = False
 		dead_heads = []
@@ -41,9 +49,10 @@ def queue_battle(dist:int,*armies):
 			for bullet_index, bullet in enumerate(bullets):
 				bullet.dist -= bullet.vel 					# flying bullet
 
-				if bullet.dist <= 0:							# the bullet hits
+				if bullet.dist <= 0: 						# the bullet hits
 					target_index = bullet.target
-					bullets.pop(bullet_index)
+					#print(bullets, len(bullets))
+					#bullets.pop(bullet_index)
 					dead_heads.append(target_index)
 					armies[target_index].pop(0)
 
@@ -51,17 +60,17 @@ def queue_battle(dist:int,*armies):
 						armies.pop(target_index)
 						bullets = []
 						army_died = True
-
-		if army_died:
-			army_died = False
-			continue
+						break
 
 		# the soldiers shot
-		for army_index, army in enumerate(armies):
-			if army_index not in dead_heads:			# if the soldier isn´t dead
-				target_index = army_index+1 if army_index+1 < len(armies) else 0
-				bullets.append(Bullet(army[0].vel, dist, target_index)) 	# shot
-				armies[army_index].append(armies[army_index].pop(0))		# go last on the queue
+		if not army_died:
+			for army_index, army in enumerate(armies):
+				if army_index not in dead_heads:			# if the soldier isn´t dead
+					target_index = army_index+1 if army_index+1 < len(armies) else 0
+					bullets.append(Bullet(army[0].vel, dist, target_index)) 	# shot
+					armies[army_index].append(armies[army_index].pop(0))		# go last on the queue
+				else:
+					print(army_index)
 	
 	if len(armies) == 1:
 		army_index = armies[0][0].army
@@ -78,8 +87,14 @@ def queue_battle(dist:int,*armies):
 	
     
 
-print(queue_battle(400, (186,78,56,67,78,127,78,192), (78,67,208,45,134,212,82,99), (327,160,49,246,109,98,44,57)))
+#print(queue_battle(500,(345,168,122,269,151),(56,189,404,129,101),(364,129,209,163,379),(520,224,154,74,420)))
+#print(queue_battle(100,(25,38,55,46,82),(64,90,37,25,58)))
 # (2,(0,2,5))
+
+A = (98,112,121,95,63)
+B = (120,94,90,88,30)
+C = (116,144,45,200,32)
+print(queue_battle(300,A,B,C)) #(0,(3,))
 
 #a = [1,2,3]
 #a.append(a.pop(0))
