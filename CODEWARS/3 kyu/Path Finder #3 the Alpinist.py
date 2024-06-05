@@ -2,10 +2,7 @@ import sys
 from copy import deepcopy
 
 def walk(maze, x, y, sum, past):
-    if maze[x][y] == float('inf'):
-        return float('inf')
-    
-    if x == len(maze)-2 and y == len(maze[0])-2:
+    if x == len(maze)-1 and y == len(maze[0])-1:
         return sum
     
 
