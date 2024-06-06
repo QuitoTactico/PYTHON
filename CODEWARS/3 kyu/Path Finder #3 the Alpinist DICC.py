@@ -33,33 +33,43 @@ def walk(maze, x, y, sum, past):
     
 def path_finder(maze):
     global min_llegada
-    #min_llegada = float('inf')
-    #min_llegada = 5
 
     sys.setrecursionlimit(5000)
 
-    matrix_maze_beta = [[item for item in list(map(int, list(line)))] for line in maze.split()]
-    #matrix_maze = matrix_maze_beta
-    matrix_maze = []
-    for i, item in enumerate(matrix_maze_beta):
+    matrix_maze_beta = {i:{j:item for j,item in enumerate(list(map(int, list(line))))} for i,line in enumerate(maze.split())}
+    
+    new_index = 0
+    matrix_maze = {}
+    for i, item in enumerate(matrix_maze_beta.values()):
         if i==len(matrix_maze_beta)-1 or item!=matrix_maze_beta[i+1]:
-            matrix_maze.append(item)
-    '''
-    for i, item in enumerate(matrix_maze_beta):
-        if i==len(matrix_maze_beta)-1 or item!=matrix_maze_beta[i+1]:
-            matrix_maze.append(item)
-    '''
-    #min_llegada = sum(matrix_maze[-1]) + sum(item[0] for item in matrix_maze) # L
-    counter = 1
-    L_list = matrix_maze[-1]+[item[0] for item in matrix_maze]
+            matrix_maze[new_index]=item
+            new_index+=1
+    
+
+    #min_llegada = float('inf')
+
+    
+    len_x = len(matrix_maze[0])
+    len_y = len(matrix_maze)
+
+    min_L = 1
+    L_list = [matrix_maze[i][0] for i in range(len_y)] + [matrix_maze[len_y-1][i] for i in range(len_x)]
     last = L_list[0]
     for i in L_list[1:]:
-        counter = counter+abs(i-last)
+        min_L = min_L+abs(i-last)
         last = i
+
+    min_J = 1
+    J_list = [matrix_maze[0][i] for i in range(len_x)] + [matrix_maze[i][len_x-1] for i in range(len_y)] 
+    last = J_list[0]
+    for i in J_list[1:]:
+        min_J = min_J+abs(i-last)
+        last = i
+
+    min_llegada = min(min_L, min_J)
     
-    min_llegada = counter
-    
-    #return(counter)
+
+    #return matrix_maze
     return walk(matrix_maze, 0, 0, 0, {})
 
 
