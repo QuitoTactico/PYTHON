@@ -33,23 +33,33 @@ def walk(maze, x, y, sum, past):
     
 def path_finder(maze):
     global min_llegada
-    min_llegada = float('inf')
+    #min_llegada = float('inf')
     #min_llegada = 5
 
     sys.setrecursionlimit(5000)
 
     matrix_maze_beta = [[item for item in list(map(int, list(line)))] for line in maze.split()]
+    #matrix_maze = matrix_maze_beta
     matrix_maze = []
     for i, item in enumerate(matrix_maze_beta):
         if i==len(matrix_maze_beta)-1 or item!=matrix_maze_beta[i+1]:
             matrix_maze.append(item)
     '''
-    for i in matrix_maze_beta:
-        if i not in matrix_maze:
-            matrix_maze.append(i)
+    for i, item in enumerate(matrix_maze_beta):
+        if i==len(matrix_maze_beta)-1 or item!=matrix_maze_beta[i+1]:
+            matrix_maze.append(item)
     '''
     #min_llegada = sum(matrix_maze[-1]) + sum(item[0] for item in matrix_maze) # L
+    counter = 1
+    L_list = matrix_maze[-1]+[item[0] for item in matrix_maze]
+    last = L_list[0]
+    for i in L_list[1:]:
+        counter = counter+abs(i-last)
+        last = i
     
+    min_llegada = counter
+    
+    #return(counter)
     return walk(matrix_maze, 0, 0, 0, {})
 
 
