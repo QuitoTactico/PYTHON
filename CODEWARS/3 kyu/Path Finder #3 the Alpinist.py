@@ -1,20 +1,17 @@
 import sys
 from copy import deepcopy
 
-min_llegada = float('inf')
-
 def walk(maze, x, y, sum, past):
     global min_llegada
 
+    if sum >= min_llegada:
+        return float('inf')
+    
     if x == len(maze)-1 and y == len(maze[0])-1:
         min_llegada = min(sum, min_llegada)
         return sum
     
-    if sum >= min_llegada:
-        return float('inf')
 
-    #maze = deepcopy(maze)
-    #maze[x][y] = '.'
     past = deepcopy(past)
     past[f'{x} {y}'] = True
     
@@ -23,7 +20,10 @@ def walk(maze, x, y, sum, past):
         for j in range(max(y-1,0), min(y+1,len(maze[0])-1) +1):
             if (abs((x-i)+(y-j)) == 1) and f'{i} {j}' not in past:
                 new_sum = sum+abs(maze[x][y]-maze[i][j])
-                posibles.append(walk(maze, i, j, new_sum, past))
+                if new_sum < min_llegada:
+                    caminata = walk(maze, i, j, new_sum, past)
+                    if caminata != float('inf'):
+                        posibles.append(caminata)
     
     try:
         return min(posibles)
@@ -32,12 +32,23 @@ def walk(maze, x, y, sum, past):
 
     
 def path_finder(maze):
+    global min_llegada
+    min_llegada = float('inf')
+    #min_llegada = 5
+
     sys.setrecursionlimit(5000)
 
-    # pared de infinitos, jajjajaja
-    #matrix_maze = [[item for item in [float('inf')]+list(map(int, list(line)))+[float('inf')]] for line in maze.split()]
-    #matrix_maze = ([[float('inf')]*len(matrix_maze[0])])+matrix_maze+([[float('inf')]*len(matrix_maze[0])])
-    matrix_maze = [[item for item in list(map(int, list(line)))] for line in maze.split()]
+    matrix_maze_beta = [[item for item in list(map(int, list(line)))] for line in maze.split()]
+    matrix_maze = []
+    for i, item in enumerate(matrix_maze_beta):
+        if i==len(matrix_maze_beta)-1 or item!=matrix_maze_beta[i+1]:
+            matrix_maze.append(item)
+    '''
+    for i in matrix_maze_beta:
+        if i not in matrix_maze:
+            matrix_maze.append(i)
+    '''
+    #min_llegada = sum(matrix_maze[-1]) + sum(item[0] for item in matrix_maze) # L
     
     return walk(matrix_maze, 0, 0, 0, {})
 
@@ -75,4 +86,15 @@ f = "\n".join([
           "007777"
         ])
 
-print(path_finder(e))
+g = "\n".join([
+          "000000",
+          "000000",
+          "000000",
+          "000010",
+          "000109",
+          "001010"
+        ])
+
+h  = '99321659285\n82274152378\n95311209346\n11818079185\n50926731149\n06934617619\n05718311124\n91803296898\n42959100694\n70004528365\n76632198148'
+
+print(path_finder(h))
