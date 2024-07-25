@@ -12,6 +12,10 @@ def reverse_words(text:str):
 
 text = "holasaurio"
 
+'''
 a = text[ 2: 5]
 
 print(a)
+'''
+
+print(reverse_words('HABIA UNA VEZ UNA IGUANA'))
