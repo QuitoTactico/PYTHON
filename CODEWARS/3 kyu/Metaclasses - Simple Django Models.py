@@ -71,8 +71,10 @@ class EmailField(CharField):
 class ModelMeta(type):
     def __new__(cls, name, bases, attrs):
         fields = {key: value for key, value in attrs.items() if isinstance(value, Field)}
-        for key, value in fields.items():
-            value.name = key
+        #for key, value in fields.items():
+        for key in fields.keys():
+            #value.name = key
+            attrs.pop(key)
         attrs['_fields'] = fields
         return super().__new__(cls, name, bases, attrs)
 
@@ -99,8 +101,6 @@ class User(Model):
     is_verified = BooleanField(default=False)
     date_joined = DateTimeField(auto_now=True)
     age = IntegerField(min_value=5, max_value=120, blank=True)
-
-hasattr(User, 'first_name')
 
 user1 = User(first_name='Liam', last_name='Smith', email='liam@example.com')
 user1.validate()
