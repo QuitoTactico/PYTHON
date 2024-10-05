@@ -1,15 +1,17 @@
 # WTFFFFFFFFFFFFFFFF
-count_bits_wtf=int.bit_count
+count_bits_wtf = int.bit_count
 
-print(count_bits_wtf(7)) # 3
+print(count_bits_wtf(7))  # 3
 
-sapoperro=str.capitalize
+sapoperro = str.capitalize
 
-print(sapoperro("owo")) # Owo
+print(sapoperro("owo"))  # Owo
 
 
 # cosa = int + 2000000000               # no se puede
-def cosa(a:int): return a+2000000000
+def cosa(a: int):
+    return a + 2000000000
+
 
 print(cosa(2))
 

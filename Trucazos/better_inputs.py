@@ -1,8 +1,7 @@
-h,k = map(int,input().split())
+h, k = map(int, input().split())
 print(h)
 print(k)
 
 
-
-n = list(map(int,input().split()))
+n = list(map(int, input().split()))
 print(n)

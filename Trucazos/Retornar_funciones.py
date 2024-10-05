@@ -4,6 +4,7 @@ def funcion_principal():
 
     return funcion_anidada
 
+
 # Llamamos a la función principal para obtener la función anidada
 mi_funcion = funcion_principal()
 
