@@ -4,10 +4,12 @@ class Node:
         self.left = left
         self.right = right
 
-def InsertarBST(root : Node,val):
-    if root == None: return Node(val)
+
+def InsertarBST(root: Node, val):
+    if root == None:
+        return Node(val)
     arbol = root
-    while(True):
+    while True:
         if val < root.val:
             if root.left == None:
                 root.left = Node(val)
@@ -19,7 +21,7 @@ def InsertarBST(root : Node,val):
             if root.right == None:
                 root.right = Node(val)
                 break
-            else: 
+            else:
                 root = root.right
                 continue
     return arbol

@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def path_finder(maze: str) -> int | bool:
     table = list(map(list, maze.split("\n")))
     max_len = len(table[0]) - 1
@@ -21,26 +22,36 @@ def path_finder(maze: str) -> int | bool:
             result = True
             break
 
-        if table[y][x] == 'x':
+        if table[y][x] == "x":
             continue
 
-        if max_len >= y and max_len >= x + 1 and table[y][x + 1] == '.' and table[y][x + 1] != 'x':
+        if (
+            max_len >= y
+            and max_len >= x + 1
+            and table[y][x + 1] == "."
+            and table[y][x + 1] != "x"
+        ):
             stack.appendleft([y, x + 1])
             history[y, x + 1] = [y, x]
 
-        if max_len >= y + 1 and max_len >= x and table[y + 1][x] == '.' and table[y + 1][x] != 'x':
+        if (
+            max_len >= y + 1
+            and max_len >= x
+            and table[y + 1][x] == "."
+            and table[y + 1][x] != "x"
+        ):
             stack.appendleft([y + 1, x])
             history[y + 1, x] = [y, x]
 
-        if y - 1 >= 0 and x >= 0 and table[y - 1][x] == '.' and table[y - 1][x] != 'x':
+        if y - 1 >= 0 and x >= 0 and table[y - 1][x] == "." and table[y - 1][x] != "x":
             stack.appendleft([y - 1, x])
             history[y - 1, x] = [y, x]
 
-        if y >= 0 and x - 1 >= 0 and table[y][x - 1] == '.' and table[y][x - 1] != 'x':
+        if y >= 0 and x - 1 >= 0 and table[y][x - 1] == "." and table[y][x - 1] != "x":
             stack.appendleft([y, x - 1])
             history[y, x - 1] = [y, x]
 
-        table[y][x] = 'x'
+        table[y][x] = "x"
 
     if not result:
         return False

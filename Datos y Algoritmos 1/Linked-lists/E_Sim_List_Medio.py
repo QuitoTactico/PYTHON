@@ -1,35 +1,43 @@
-class Node: # No cambiar esta clase
+class Node:  # No cambiar esta clase
     def __init__(self, val):
         self.val = val
         self.next = None
 
+
 def erase(head: Node) -> Node:
-    if(head == None): return head
-    l = largo(head,0)
+    if head == None:
+        return head
+    l = largo(head, 0)
     index = 0
-    if(l%2==0):index = (l/2)+1
-    else:index = (l+1)/2
-    return erasei(head,index)
+    if l % 2 == 0:
+        index = (l / 2) + 1
+    else:
+        index = (l + 1) / 2
+    return erasei(head, index)
 
 
-def erasei(head: Node, i:int):  
-    if(head==None): return head
-    if(i==1):
+def erasei(head: Node, i: int):
+    if head == None:
+        return head
+    if i == 1:
         return head.next
-    else:    
-        head.next = erasei(head.next,i-1)
+    else:
+        head.next = erasei(head.next, i - 1)
     return head
 
 
-
-#-------------------------- cut ---------------------------#
+# -------------------------- cut ---------------------------#
 def largo(head: Node, i: int):
-    if(head==None):return i
-    return largo(head.next,i+1)
-def imprimir(head : Node) -> None:
-    while(head != None):
+    if head == None:
+        return i
+    return largo(head.next, i + 1)
+
+
+def imprimir(head: Node) -> None:
+    while head != None:
         print(head.val)
         head = head.next
+
 
 def main():
     n1 = Node(1)
@@ -45,16 +53,19 @@ def main():
     n7 = Node(7)
     n5.next = n6
     n6.next = n7
-    l = largo(n1,0)
-    print("Largo:",l)
+    l = largo(n1, 0)
+    print("Largo:", l)
     index = 0
-    if(l%2==0):index = l/2
-    else:index = (l+1)/2
-    print("Index:",int(index))
+    if l % 2 == 0:
+        index = l / 2
+    else:
+        index = (l + 1) / 2
+    print("Index:", int(index))
     imprimir(n1)
     print("---")
 
     res = erase(n1)
     imprimir(res)
- 
+
+
 main()

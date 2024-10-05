@@ -8,6 +8,7 @@ import sounddevice as sd
 import numpy as np
 from scipy.io.wavfile import write
 
+
 def listen():
     # Crear un objeto de reconocimiento de voz
     r = sr.Recognizer()
@@ -21,9 +22,10 @@ def listen():
     sd.wait()
 
     # Guardar la grabación en un archivo WAV
-    write('output.wav', fs, myrecording)
+    write("output.wav", fs, myrecording)
 
-'''
+
+"""
     # Utilizar el archivo WAV como fuente de audio
     with sr.AudioFile('output.wav') as source:
         audio = r.record(source)
@@ -36,7 +38,8 @@ def listen():
                 file.write(text + "\n")
         except Exception as e:
             print("Error: ", str(e))
-'''
+"""
+
 
 def my_write():
     # Crear un objeto de reconocimiento de voz
@@ -49,6 +52,7 @@ def my_write():
         # Convertir el audio a texto
         text = r.recognize_google(audio_data, language="es-ES")
         print(text)
+
 
 if __name__ == "__main__":
     listen()

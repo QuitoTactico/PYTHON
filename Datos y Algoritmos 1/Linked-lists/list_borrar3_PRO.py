@@ -1,20 +1,21 @@
-class Node: # No cambiar esta clase
+class Node:  # No cambiar esta clase
     def __init__(self, val):
         self.val = val
         self.next = None
 
-def borrar(head: Node, pos:int):  
-    if(head==None): return 0
-    if(pos==1):
+
+def borrar(head: Node, pos: int):
+    if head == None:
+        return 0
+    if pos == 1:
         return head.next
-    else:    
-        head.next = borrar(head.next,pos-1)
+    else:
+        head.next = borrar(head.next, pos - 1)
     return head
 
 
-
-#-------------------------- cut ---------------------------#
-'''def largo(head: Node, i: int):
+# -------------------------- cut ---------------------------#
+"""def largo(head: Node, i: int):
     if(head==None):return i
     return largo(head.next,i+1)
 def imprimir(head : Node) -> None:
@@ -48,4 +49,4 @@ def main():
     res = borrar(n1,5)
     imprimir(res)
  
-main()'''
+main()"""

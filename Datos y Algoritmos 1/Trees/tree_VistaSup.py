@@ -1,20 +1,23 @@
 from collections import deque
 
+
 class Node:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
 
-def vistaSup(root:Node):
-    if root == None: return ""
+
+def vistaSup(root: Node):
+    if root == None:
+        return ""
     vista = deque()
     arbol = root
-    while(root!=None):
+    while root != None:
         vista.append(root.val)
         root = root.right
     root = arbol.left
-    while(root!=None):
+    while root != None:
         vista.appendleft(root.val)
         root = root.left
 
@@ -31,13 +34,14 @@ def main():
     n6 = Node(6)
     n7 = Node(7)
 
-    n2 = Node(2,n4,n5)
-    n3 = Node(3,n6,n7)
-    
-    n1 = Node(1,n2,n3)
+    n2 = Node(2, n4, n5)
+    n3 = Node(3, n6, n7)
+
+    n1 = Node(1, n2, n3)
     print(vistaSup(n1))
 
-#     1 
+
+#     1
 #   2   3
 #  4 5 6 7
 

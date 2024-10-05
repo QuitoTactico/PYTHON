@@ -1,6 +1,7 @@
 from heapq import heappop, heappush
 from math import inf
 
+
 def path_finder(area):
     grid = [list(map(int, line)) for line in area.split("\n")]
     size = len(grid)

@@ -2,19 +2,21 @@ def last_digit(lst):
     nada = [None, []]
     if lst in nada:
         return 1
-    
-    res = lst[0]%10
+
+    res = lst[0] % 10
     for i in lst[1:]:
         for _ in range(i):
-            res = (res * res)%10
+            res = (res * res) % 10
     return res
 
+
 # -------------------------------------------------------------
+
 
 def last_digit_of_power(a, b):
     if b == 0:
         return 1
-    
+
     a %= 10
     if a in [0, 1, 5, 6]:
         return a
@@ -22,7 +24,8 @@ def last_digit_of_power(a, b):
         return 4 if b % 2 == 0 else a
     if a in [2, 3, 7, 8]:
         b = b % 4 if b % 4 != 0 else 4
-        return (a ** b) % 10
+        return (a**b) % 10
+
 
 def last_digit2(lst):
     if not lst:
@@ -32,7 +35,9 @@ def last_digit2(lst):
         power = last_digit_of_power(x, power)
     return power
 
+
 # --------------------------------------------------------------------
+
 
 def last_digit_of_power(a, b):
     if b == 0:
@@ -49,11 +54,12 @@ def last_digit_of_power(a, b):
         return 9 if b % 2 == 1 else 1
     if a == 4:
         return 4 if b % 2 == 1 else 6
-    
+
     # ciclos de 4
     a = a % 10
-    cycle = [a, (a ** 2) % 10, (a ** 3) % 10, (a ** 4) % 10]
+    cycle = [a, (a**2) % 10, (a**3) % 10, (a**4) % 10]
     return cycle[(b % 4) - 1]
+
 
 def last_digit(lst):
     if not lst:
@@ -68,7 +74,9 @@ def last_digit(lst):
 
     return power
 
+
 # ------------------------------------------------------------------------------
+
 
 def last_digit(lst):
     if not lst:
@@ -92,12 +100,13 @@ def last_digit(lst):
             return 4 if b % 2 == 1 else 6 if a == 4 else 1
         if a in [2, 3, 7, 8]:
             b = mod4(b)
-            return (a ** b) % 10
+            return (a**b) % 10
 
     power = 1
     for x in reversed(lst):
         power = last_digit_of_power(x, power)
-    
+
     return power
 
-#print(last_digit([3, 4, 2]))
+
+# print(last_digit([3, 4, 2]))

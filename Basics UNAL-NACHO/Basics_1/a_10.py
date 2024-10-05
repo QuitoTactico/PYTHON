@@ -1,4 +1,4 @@
-'''
+"""
 n = int(input())
 
 lista = []
@@ -13,9 +13,12 @@ def multip(m):
 
 for i in lista:
     multip(i)
-'''
+"""
 
 
+def multip(m):
+    print(m * 2)
 
-def multip(m):print(m*2)
-for i in range(int(input())): multip(int(input()))
+
+for i in range(int(input())):
+    multip(int(input()))

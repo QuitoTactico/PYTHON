@@ -1,2 +1,2 @@
-def hasht(table : dict,val):
+def hasht(table: dict, val):
     return table[val]

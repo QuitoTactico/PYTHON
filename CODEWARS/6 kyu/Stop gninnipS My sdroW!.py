@@ -5,4 +5,5 @@ def spin_words(sentence):
             words[i] = words[i][::-1]
     return " ".join(words)
 
+
 print(spin_words("Hey fellow warriors"))

@@ -1,3 +1,3 @@
-def high_and_low(numbers:str):
+def high_and_low(numbers: str):
     num_list = list(map(int, numbers.split()))
-    return f'{max(num_list)} {min(num_list)}'
+    return f"{max(num_list)} {min(num_list)}"

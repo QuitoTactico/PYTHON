@@ -1,4 +1,6 @@
 import collections
+
+
 class Node:
     def __init__(self, val):
         self.val = val
@@ -6,22 +8,23 @@ class Node:
 
 
 def invertir(head: Node) -> Node:
-    if(head==None):return None
+    if head == None:
+        return None
     pila = collections.deque()
-    while(head!=None):
+    while head != None:
         pila.appendleft(head)
         head = head.next
-    for i in range(1,len(pila)):
-        pila[i-1].next = pila[i]
-    
+    for i in range(1, len(pila)):
+        pila[i - 1].next = pila[i]
+
     pila[-1].next = None
     return pila[0]
 
-def imprimir(head:Node):
-    while(head!=None):
+
+def imprimir(head: Node):
+    while head != None:
         print(head.val)
         head = head.next
-
 
 
 def main():
@@ -34,14 +37,15 @@ def main():
     n2.next = n3
     n3.next = n4
     n4.next = n5
-    '''n6 = Node(6)
+    """n6 = Node(6)
     n7 = Node(7)
     n5.next = n6
-    n6.next = n7'''
+    n6.next = n7"""
     print("---")
 
-#------------------------- cambiar -------------------------#
+    # ------------------------- cambiar -------------------------#
     n = invertir(n1)
     imprimir(n)
+
 
 main()

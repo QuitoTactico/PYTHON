@@ -3,8 +3,10 @@ class Node:
         self.val = val
         self.next = None
 
+
 def posicion(head: Node, i: int) -> int:
-    if head == None: return 0
-    if(i== 1):
+    if head == None:
+        return 0
+    if i == 1:
         return head.val
-    return posicion(head.next,i-1)
+    return posicion(head.next, i - 1)

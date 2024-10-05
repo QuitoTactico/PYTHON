@@ -1,19 +1,25 @@
 from collections import deque
 
+
 def dir_reduc(arr):
     dir = deque()
 
     for i in arr:
-        if dir and ((dir[-1] == 'NORTH' and i == 'SOUTH') or (dir[-1] == 'SOUTH' and i == 'NORTH') or (dir[-1] == 'EAST' and i == 'WEST') or (dir[-1] == 'WEST' and i == 'EAST')):
+        if dir and (
+            (dir[-1] == "NORTH" and i == "SOUTH")
+            or (dir[-1] == "SOUTH" and i == "NORTH")
+            or (dir[-1] == "EAST" and i == "WEST")
+            or (dir[-1] == "WEST" and i == "EAST")
+        ):
             dir.pop()
 
-        else: 
+        else:
             dir.append(i)
 
     return list(dir)
 
 
-''' better than me:
+""" better than me:
 
 opposite = {'NORTH': 'SOUTH', 'EAST': 'WEST', 'SOUTH': 'NORTH', 'WEST': 'EAST'}
 
@@ -35,4 +41,4 @@ def dirReduc(arr):
     dir3 = dir2.split()
     return dirReduc(dir3) if len(dir3) < len(arr) else dir3
 
-'''
+"""

@@ -1,6 +1,7 @@
 # https://www.bowlinggenius.com/
 
-def bowling_score(frames:str):
+
+def bowling_score(frames: str):
     frames_list = frames.split()
 
     total = 0
@@ -10,13 +11,13 @@ def bowling_score(frames:str):
 
     for index, frame in enumerate(frames_list):
 
-        if frame.isnumeric(): # 62
+        if frame.isnumeric():  # 62
             total += sum(int(j) for j in frame)
-            
-        elif index == 'X':
+
+        elif index == "X":
             total += 10
-        elif index == 'XXX':
+        elif index == "XXX":
             total += 30
 
 
-bowling_score('11 11 11 11 11 11 11 11 11 11')
+bowling_score("11 11 11 11 11 11 11 11 11 11")

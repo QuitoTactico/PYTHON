@@ -1,4 +1,3 @@
-
 from collections import deque
 
 
@@ -8,9 +7,11 @@ class Node:
         self.left = left
         self.right = right
 
+
 def ArbolALista(root: Node) -> None:
-    if root == None : return None
-    
+    if root == None:
+        return None
+
     arbol = Node("aux")
     arbolaux = arbol
     for i in dequeArbol(root):
@@ -20,16 +21,19 @@ def ArbolALista(root: Node) -> None:
     root = arbolaux.right
     return root  ###
 
-def dequeArbol(root : Node):
+
+def dequeArbol(root: Node):
     res = deque([root.val])
-    if root == None : return None
+    if root == None:
+        return None
 
-    if root.left == None and root.right == None: return res
+    if root.left == None and root.right == None:
+        return res
 
-    if root.left == None: 
+    if root.left == None:
         res.extend(dequeArbol(root.right))
         return res
-    if root.right == None: 
+    if root.right == None:
         res.extend(dequeArbol(root.left))
         return res
 
@@ -37,10 +41,12 @@ def dequeArbol(root : Node):
     res.extend(dequeArbol(root.right))
     return res
 
-def imprimir(head : Node) -> None:
-    while(head != None):
+
+def imprimir(head: Node) -> None:
+    while head != None:
         print(head.val)
         head = head.right
+
 
 def main():
     n4 = Node(4)
@@ -48,11 +54,12 @@ def main():
     n6 = Node(6)
     n7 = Node(7)
 
-    n2 = Node(2,n4,n5)
-    n3 = Node(3,n6,n7)
-    
-    n1 = Node(1,n2,n3)
+    n2 = Node(2, n4, n5)
+    n3 = Node(3, n6, n7)
+
+    n1 = Node(1, n2, n3)
     imprimir(ArbolALista(n1))
+
 
 #     1
 #   2   3

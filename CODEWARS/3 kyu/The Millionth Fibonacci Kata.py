@@ -1,9 +1,12 @@
 def fib(n):
     if n < 0:
         # Negafibonacci
-        #return fib(-n) if n % 2 == 0 else -fib(-n) # this is correct according to wikipedia, but...
-        return -fib(-n) if n % 2 == 0 else fib(-n)  # this was correct according to the kata, who knows
+        # return fib(-n) if n % 2 == 0 else -fib(-n) # this is correct according to wikipedia, but...
+        return (
+            -fib(-n) if n % 2 == 0 else fib(-n)
+        )  # this was correct according to the kata, who knows
     return fib_iter(1, 0, 0, 1, n)
+
 
 def fib_iter(a, b, p, q, count):
     if count == 0:

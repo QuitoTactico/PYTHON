@@ -1,20 +1,30 @@
-class Node: # No cambiar esta clase
+class Node:  # No cambiar esta clase
     def __init__(self, val):
         self.val = val
         self.next = None
-def cambiaElNombre(head:Node,ejemplo:str):
-    '''escribe la función aquí'''
+
+
+def cambiaElNombre(head: Node, ejemplo: str):
+    """escribe la función aquí"""
     a_Codificar_Parcero = "resultado ;)"
     return Node(a_Codificar_Parcero)
-#------------------------ cut -----------------------------#
+
+
+# ------------------------ cut -----------------------------#
+
 
 def largo(head: Node, i: int):
-    if(head==None):return i
-    return largo(head.next,i+1)
-def imprimir(head : Node) -> None:
-    while(head != None):
+    if head == None:
+        return i
+    return largo(head.next, i + 1)
+
+
+def imprimir(head: Node) -> None:
+    while head != None:
         print(head.val)
         head = head.next
+
+
 def main():
     n1 = Node(1)
     n2 = Node(2)
@@ -25,15 +35,17 @@ def main():
     n2.next = n3
     n3.next = n4
     n4.next = n5
-    '''n6 = Node(6)
+    """n6 = Node(6)
     n7 = Node(7)
     n5.next = n6
-    n6.next = n7'''
-    print(largo(n1,0),"(Largo)")
+    n6.next = n7"""
+    print(largo(n1, 0), "(Largo)")
     imprimir(n1)
     print("---")
 
-#------------------------- cambiar -------------------------#
-    n = cambiaElNombre(n1,"¿necesitaAlgoMás?")
+    # ------------------------- cambiar -------------------------#
+    n = cambiaElNombre(n1, "¿necesitaAlgoMás?")
     imprimir(n)
+
+
 main()

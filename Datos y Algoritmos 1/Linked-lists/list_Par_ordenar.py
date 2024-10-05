@@ -2,22 +2,32 @@ class Node:
     def __init__(self, val):
         self.val = val
         self.next = None
-def juntar(n1:Node,n2:Node):
-    if(n1.next!=None):
-        n1.next = juntar(n1.next,n2)
+
+
+def juntar(n1: Node, n2: Node):
+    if n1.next != None:
+        n1.next = juntar(n1.next, n2)
         return n1
-    else: 
+    else:
         n1.next = n2
         return n1
-#------------------------ cut -----------------------------#
+
+
+# ------------------------ cut -----------------------------#
+
 
 def largo(head: Node, i: int):
-    if(head==None):return i
-    return largo(head.next,i+1)
-def imprimir(head : Node) -> None:
-    while(head != None):
+    if head == None:
+        return i
+    return largo(head.next, i + 1)
+
+
+def imprimir(head: Node) -> None:
+    while head != None:
         print(head.val)
         head = head.next
+
+
 def main():
     n1 = Node(1)
     n2 = Node(2)
@@ -37,15 +47,17 @@ def main():
     m2.next = m3
     m3.next = m4
     m4.next = m5
-    '''n6 = Node(6)
+    """n6 = Node(6)
     n7 = Node(7)
     n5.next = n6
-    n6.next = n7'''
-    print(largo(n1,0),"(Largo)")
+    n6.next = n7"""
+    print(largo(n1, 0), "(Largo)")
     imprimir(n1)
     print("---")
 
-#------------------------- cambiar -------------------------#
-    n = juntar(n1,m1)
+    # ------------------------- cambiar -------------------------#
+    n = juntar(n1, m1)
     imprimir(n)
+
+
 main()

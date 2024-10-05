@@ -3,10 +3,11 @@ class Node:
         self.val = val
         self.next = None
 
-def borrar(head: Node, pos:int):
-    if(head == None):
+
+def borrar(head: Node, pos: int):
+    if head == None:
         return 0
-    elif(pos == 1):
+    elif pos == 1:
         new = head.next
         head.next = head
         head.next = new.next
@@ -19,6 +20,6 @@ def borrar(head: Node, pos:int):
             else:
                 before = previo
                 previo = previo.next
-            new =  previo.next
+            new = previo.next
             before.next = new
             return head

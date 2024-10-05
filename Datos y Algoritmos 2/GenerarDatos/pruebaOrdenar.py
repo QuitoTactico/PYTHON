@@ -5,4 +5,3 @@ if __name__ == "__main__":
 
     for elemento in muestra:
         print(elemento)
-

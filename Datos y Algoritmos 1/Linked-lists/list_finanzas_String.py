@@ -1,41 +1,52 @@
-class Node: # No cambiar esta clase
+class Node:  # No cambiar esta clase
     def __init__(self, val):
         self.val = val
         self.next = None
+
+
 def sumar(head1: Node, head2: Node):
     h1 = invertir(head1)
     h2 = invertir(head2)
-    h1 = f(h1,h2)
+    h1 = f(h1, h2)
     res = invertir(h1)
     putostring = ptmString(res)
     return putostring
 
-def ptmString(h:Node) -> str:
+
+def ptmString(h: Node) -> str:
     s = ""
-    while(h != None):
-        s = s+str(h.val)
+    while h != None:
+        s = s + str(h.val)
         h = h.next
-    return s  
+    return s
+
 
 def f(h1: Node, h2: Node):
-    if(h1 == None):return h2
-    if(h2 == None):return h1
+    if h1 == None:
+        return h2
+    if h2 == None:
+        return h1
     temp = int(h1.val) + int(h2.val)
-    if(temp < 10):h1.val = temp
-    if(temp >= 10):
-        h1.val = temp-10
-        if(h1.next != None):(h1.next).val = (h1.next).val+1
-        if(h1.next == None):h1.next = Node(1)
-    h1.next = f(h1.next,h2.next)
+    if temp < 10:
+        h1.val = temp
+    if temp >= 10:
+        h1.val = temp - 10
+        if h1.next != None:
+            (h1.next).val = (h1.next).val + 1
+        if h1.next == None:
+            h1.next = Node(1)
+    h1.next = f(h1.next, h2.next)
     return h1
 
-def invertir(head:Node):
-    if(head==None): return None
+
+def invertir(head: Node):
+    if head == None:
+        return None
     temp = None
-    #node es node, obvio, head = head
+    # node es node, obvio, head = head
     nexto = head.next
-    while(True):
-        if(nexto == None):
+    while True:
+        if nexto == None:
             head.next = temp
             return head
         head.next = temp
@@ -43,15 +54,22 @@ def invertir(head:Node):
         head = nexto
         nexto = nexto.next
 
-#------------------------ cut -----------------------------#
+
+# ------------------------ cut -----------------------------#
+
 
 def largo(head: Node, i: int):
-    if(head==None):return i
-    return largo(head.next,i+1)
-def imprimir(head : Node) -> None:
-    while(head != None):
+    if head == None:
+        return i
+    return largo(head.next, i + 1)
+
+
+def imprimir(head: Node) -> None:
+    while head != None:
         print(head.val)
         head = head.next
+
+
 def main():
     n1 = Node(3)
     n2 = Node(1)
@@ -71,14 +89,16 @@ def main():
     m2.next = m3
     m3.next = m4
     m4.next = m5
-    '''n6 = Node(6)
+    """n6 = Node(6)
     n7 = Node(7)
     n5.next = n6
-    n6.next = n7'''
-    print(largo(n1,0),"(Largo)")
+    n6.next = n7"""
+    print(largo(n1, 0), "(Largo)")
     imprimir(n1)
     print("---")
-#------------------------- cambiar -------------------------#
-    n = sumar(m1,n1)
+    # ------------------------- cambiar -------------------------#
+    n = sumar(m1, n1)
     print(n)
+
+
 main()

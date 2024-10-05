@@ -4,6 +4,7 @@
 import speech_recognition as sr
 import os
 
+
 def listen_and_write():
     # Crear un objeto de reconocimiento de voz
     r = sr.Recognizer()
@@ -26,6 +27,7 @@ def listen_and_write():
         print("No se pudo reconocer el audio")
     except sr.RequestError as e:
         print("Error al solicitar el servicio de reconocimiento de voz; {0}".format(e))
+
 
 # Será llamarla desde afuera para testearla más rápido
 listen_and_write()

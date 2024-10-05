@@ -1,11 +1,14 @@
 import collections
 
+
 class Node:
     def __init__(self, val):
         self.val = val
         self.l = None
-        self.r = None     
-a,b = input() , collections.deque(map(int,input().split(" ")))
+        self.r = None
+
+
+a, b = input(), collections.deque(map(int, input().split(" ")))
 arbol = Node(b.popleft())
 print(int("0"))
 for i in b:
@@ -13,10 +16,10 @@ for i in b:
     c = 0
     actual = arbol
     msnmsnms = True
-    while(msnmsnms):
-        c = c +  1
+    while msnmsnms:
+        c = c + 1
         if nuevo.val < actual.val:
-            if actual.l == None: 
+            if actual.l == None:
                 actual.l = nuevo
                 print(c)
                 break

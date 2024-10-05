@@ -7,6 +7,7 @@ def delete_zeros(lst):
             i += 1
     return lst
 
+
 def move_zeros(lst):
     zeros = 0
     final = []
@@ -16,7 +17,7 @@ def move_zeros(lst):
         else:
             final.append(i)
 
-    return final+([0]*zeros)
-    
+    return final + ([0] * zeros)
 
-print(move_zeros([1,0,0,2,0,0,3,4,5]))
+
+print(move_zeros([1, 0, 0, 2, 0, 0, 3, 4, 5]))

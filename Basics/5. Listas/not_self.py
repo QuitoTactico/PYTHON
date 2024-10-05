@@ -1,17 +1,16 @@
-a = [-1,1,0,-3,3]
+a = [-1, 1, 0, -3, 3]
 
-def multip(a:list, n:int) -> int:
+
+def multip(a: list, n: int) -> int:
     c = 1
-    for i in a[:n-1]+a[n:]:
+    for i in a[: n - 1] + a[n:]:
         c = c * i
     return c
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     b = []
     for i in range(len(a)):
-        b.append(multip(a,i+1))
+        b.append(multip(a, i + 1))
 
     print(b)
-
-

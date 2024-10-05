@@ -1,8 +1,10 @@
 import re
 from datetime import datetime
 
+
 class ValidationError(Exception):
     pass
+
 
 class Field:
     def __init__(self, blank=False, default=None):
@@ -20,6 +22,7 @@ class Field:
     def validate_value(self, value):
         raise NotImplementedError
 
+
 class CharField(Field):
     def __init__(self, min_length=0, max_length=None, **kwargs):
         super().__init__(**kwargs)
@@ -30,9 +33,14 @@ class CharField(Field):
         if not isinstance(value, str):
             raise ValidationError(f"{self.name} must be a string")
         if len(value) < self.min_length:
-            raise ValidationError(f"{self.name} must be at least {self.min_length} characters long")
+            raise ValidationError(
+                f"{self.name} must be at least {self.min_length} characters long"
+            )
         if self.max_length is not None and len(value) > self.max_length:
-            raise ValidationError(f"{self.name} must be at most {self.max_length} characters long")
+            raise ValidationError(
+                f"{self.name} must be at most {self.max_length} characters long"
+            )
+
 
 class IntegerField(Field):
     def __init__(self, min_value=None, max_value=None, **kwargs):
@@ -48,10 +56,12 @@ class IntegerField(Field):
         if self.max_value is not None and value > self.max_value:
             raise ValidationError(f"{self.name} must be at most {self.max_value}")
 
+
 class BooleanField(Field):
     def validate_value(self, value):
         if not isinstance(value, bool):
             raise ValidationError(f"{self.name} must be a boolean")
+
 
 class DateTimeField(Field):
     def __init__(self, auto_now=False, **kwargs):
@@ -62,21 +72,26 @@ class DateTimeField(Field):
         if not isinstance(value, datetime):
             raise ValidationError(f"{self.name} must be a datetime")
 
+
 class EmailField(CharField):
     def validate_value(self, value):
         super().validate_value(value)
-        if not re.match(r'^[A-Za-z]+@[A-Za-z]+\.[A-Za-z]+$', value):
+        if not re.match(r"^[A-Za-z]+@[A-Za-z]+\.[A-Za-z]+$", value):
             raise ValidationError(f"{self.name} must be a valid email address")
+
 
 class ModelMeta(type):
     def __new__(cls, name, bases, attrs):
-        fields = {key: value for key, value in attrs.items() if isinstance(value, Field)}
-        #for key, value in fields.items():
+        fields = {
+            key: value for key, value in attrs.items() if isinstance(value, Field)
+        }
+        # for key, value in fields.items():
         for key in fields.keys():
-            #value.name = key
+            # value.name = key
             attrs.pop(key)
-        attrs['_fields'] = fields
+        attrs["_fields"] = fields
         return super().__new__(cls, name, bases, attrs)
+
 
 class Model(metaclass=ModelMeta):
     def __init__(self, **kwargs):
@@ -94,6 +109,7 @@ class Model(metaclass=ModelMeta):
 
 # --------------------------------------- TEST -----------------------------------------
 
+
 class User(Model):
     first_name = CharField(max_length=30)
     last_name = CharField(max_length=50)
@@ -102,7 +118,8 @@ class User(Model):
     date_joined = DateTimeField(auto_now=True)
     age = IntegerField(min_value=5, max_value=120, blank=True)
 
-user1 = User(first_name='Liam', last_name='Smith', email='liam@example.com')
+
+user1 = User(first_name="Liam", last_name="Smith", email="liam@example.com")
 user1.validate()
 
 print(user1.date_joined)  # imprime la fecha y hora cuando se creó la instancia

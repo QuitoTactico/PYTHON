@@ -9,4 +9,5 @@ def find_uniq(arr):
         if i != num_primero:
             return i
 
-print(find_uniq([ 0, 0, 0.55, 0, 0 ]))
+
+print(find_uniq([0, 0, 0.55, 0, 0]))
