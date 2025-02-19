@@ -1,3 +1,6 @@
+# SE LLAMAN FUNCIONES DE PRIMERA CLASE
+# son funciones usadas como variable en cualquier sentido
+
 def funcion_principal():
     def funcion_anidada():
         print("¡Hola desde la función anidada!")
