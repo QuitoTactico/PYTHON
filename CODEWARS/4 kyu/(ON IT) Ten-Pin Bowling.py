@@ -1,6 +1,5 @@
 # https://www.bowlinggenius.com/
 
-
 def bowling_score(frames: str):
     frames_list = frames.split()
 
